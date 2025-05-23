@@ -22,8 +22,13 @@ jobs:
       - run: echo "😃 This is another job"
       - run: echo "😍 The following environment variables are available:"
       - run: env
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: echo "🕸️ Let's try to use the GITHUB_TOKEN"
 
       - name: "Get a workflow run using the GITHUB_TOKEN"
         run: 'curl -v "https://api.github.com/repos/romeosarkar10x/expt/actions/runs/14521301932" -H "Authorization: Bearer $GITHUB_TOKEN"'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
